@@ -1,0 +1,67 @@
+site_name: Willkommen zum Lernfeld 8 - Daten systemübergreifend bereitstellen (Fachinformatiker/IT-Systemelektroniker)
+dev_addr: '0.0.0.0:80'
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - attr_list
+  - tables
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  
+theme:
+  name: material
+  language: de
+  font: false
+  favicon: \figures\favicon.png
+  logo: \figures\favicon.png
+  icon:
+    admonition:
+      info: material/alarm 
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: light-blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+site_author: "bszetdd it-systems"
+
+extra_css:
+    - css/extra.css
+
+nav:
+  - Home : index.md
+  - Kundenauftrag : kundenauftrag.md
+  - (1) Anwendungsfälle des Geschäftsprozesses des Kunden : anwendungsfaelle.md
+  - (2) Versionskontrolle : versionskontrolle.md
+  - (3) Zeitliche Analyse des Geschäftsprozesses des Kunden : sequenzdiagramm.md
+  - (4) Projektdokumentation : projektdokumentation.md
+  - (5) Analyse der Datenquellen des Geschäftsprozesses : datenquellen.md
+  - (6) Verwaltung der Datenquellen durch den Nutzer : nutzer.md
+  - (7) Absicherung der Datenquellen : sicherheit.md
+  - (8) Datenmodell der Datenquellen : datenmodell.md
+  - (9) Implementierung der Datenquellen : datenbank.md
+  - (10) Software-Entwicklung - Vorgehensmodelle : vorgehensmodelle.md
+  - (11) Software-Entwicklung - Implementierung : implementierung.md
+  - (11 Zusatz) Industry Foundation Classes : ifc_tutorial.md
+  - (12) Software-Entwicklung - Test : test.md
+  - (13) Präsentation für potentiellen Kunden : praesentation.md
+
+  - Impressum: legal/imprint.md

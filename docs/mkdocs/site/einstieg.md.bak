@@ -1,0 +1,73 @@
+## Kleine Analogie zur Hardware-Entwicklung
+
+Der Lernbereich befasst sich mit dem Prozess der Entwicklung von Software. Verschiedene Herangehensweisen der Software-Entwicklung haben dabei auch Ähnlichkeiten mit der Entwicklung von Hardware, was der folgende Cartoon deutlich macht.
+
+![Verschiedene software-technische Herangehensweisen, um ein Auto zu entwickeln](/figures/cartoon_software_development.avif){ align=left }
+
+!!! info inline end "10 min"
+
+??? question "Aufgabe - Welcher Typ Software-Entwickler bin ich?"
+    Bewerten Sie die Aussage des Cartoons hinsichtlich Ihrer eigenen Erfahrungenen bei der Entwicklung von Software.
+
+??? note "..."
+    * Ich finde, dass  ...
+
+## Der Software-Entwickler
+
+!!! info inline end "10 min"
+
+??? question "Aufgabe - Welcher Typ Software-Entwickler wird auf dem Arbeitsmarkt gesucht?"
+    Recherchieren Sie im Portal [Stepstone](https://www.stepstone.de/jobs/softwareentwickler/in-dresden?radius=30) nach Stellengesuchen für Software-Entwickler im Raum Dresden und nennen Sie gewünschte Anforderungen der Stellen.
+
+??? note "..."
+    * Erfahrung mit agilen Methoden
+    * C# oder Python
+    * ...
+
+!!! info inline end "15 min"
+
+??? question "Aufgabe - Ich kann programmieren, bin ich deshalb automatisch bereits Software-Entwickler?"
+    Recherchieren Sie im folgenden Artikel [Entwickler >= Programmierer?!](https://schwarze-consulting.de/management/2018/02/16/Programmierer-Entwickler.html) zum Tätigkeitsfeld des Software-Entwicklers und geben Sie  Unterschiede zwischen Programmierer, Software-Entwickler, Software-Engineer und Software-Ingenieur an. Fügen Sie eine geeignete Skizze zum Vergleich der Arbeitsinhalte ein.
+
+??? note "..."
+    * Programmierer: ...
+    * Software-Entwickler: ...
+    * Software-Engineer: ...
+    * Software-Ingenieur: ....
+
+## Ansätze der Software-Entwicklung
+
+!!! info inline end "15 min"
+
+??? question "Aufgabe - Ich kann den Einfluss von Entwicklungsansätzen auf wichtige Eigenschaften von Software abschätzen."
+    Vergleichen Sie die im Cartoon dargestellten Ansätze hinsichtlich der Software-Eigenschaften Kundenakzeptanz, Kosten und Entwicklungsgeschwindigkeit.
+
+??? note "..."
+    |     | Kundenakzeptanz       |
+    | | |
+    | Waterfall  | WYSIWYG (What you see is what you get.)  |
+    | Agile Entwicklung  | ...  |
+    | ...  | ...  |
+
+    |     | Kosten       |
+    | | |
+    | Waterfall  | ...  |
+    | Agile Entwicklung  | ...  |
+    | ...  | ...  |
+
+    |     | Entwicklungsgeschwindigkeit       |
+    | | |
+    | Waterfall  | ...  |
+    | Agile Entwicklung  | ...  |
+    | ...  | ...  |
+
+!!! info inline end "5 min"
+
+??? question "Aufgabe - Welcher Ansatz ist für mich der beste?"
+    Sie bekommen die Aufgabe, eine Software zur Bewertung und Bestellung von Schulbüchern als Android-App zu entwickeln.
+    Entscheiden Sie sich für einen Ansatz aus dem Cartoon und begründen Sie Ihre Entscheidung.   
+    
+??? note "..."
+    * Ich entscheide mich für ..., weil ...   
+      
+    

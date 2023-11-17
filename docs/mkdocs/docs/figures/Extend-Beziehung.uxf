@@ -1,0 +1,13 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLActor</id><coordinates><x>36</x><y>450</y><w>54</w><h>99</h></coordinates><panel_attributes>Actor</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>162</x><y>387</y><w>225</w><h>396</h></coordinates><panel_attributes>Entwicklungsgespräch
+halign=left</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>171</x><y>441</y><w>207</w><h>108</h></coordinates><panel_attributes>Entwicklungsgespräche
+führen
+----------------------------
+extension point: Gesprächsende</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>198</x><y>639</y><w>126</w><h>45</h></coordinates><panel_attributes>neuen Termin
+vereinbaren</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>315</x><y>576</y><w>216</w><h>45</h></coordinates><panel_attributes>condition: {Keine Übereinkunft?}
+extension point: Gesprächsende
+bg=white</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>81</x><y>477</y><w>108</w><h>45</h></coordinates><panel_attributes>m1=1
+m2=1..*
+</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>540</y><w>81</w><h>117</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>585</y><w>90</w><h>27</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLActor</id><coordinates><x>450</x><y>459</y><w>72</w><h>99</h></coordinates><panel_attributes>Mitarbeiter</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>369</x><y>486</y><w>108</w><h>36</h></coordinates><panel_attributes>m1=1
+m2=1</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>81</x><y>504</y><w>162</w><h>162</h></coordinates><panel_attributes>m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;150;160</additional_attributes></element></diagram>
