@@ -6,6 +6,10 @@ des Geschäftsprozesses der ITSystemHausDD GmbH.
 
 UML steht für [Unified Modeling Language](uml.md).
 
+## Anwendungsfall des Projektes ULFX
+
+![](figures/Anwendungsfalldiagramm.png)
+
 ## Übungen
 
 ![](figures/Buchhaltung.png)
