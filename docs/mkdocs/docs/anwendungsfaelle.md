@@ -10,10 +10,4 @@ UML steht für [Unified Modeling Language](uml.md).
 
 ![](figures/Anwendungsfalldiagramm.png)
 
-## Übungen
-
-![](figures/Buchhaltung.png)
-![](figures/Bestellwesen.png)
-![](figures/Vererben.png)
-![](figures/Include-Beziehung.png)
-![](figures/Extend-Beziehung.png)
+![](figures/Login.png)
