@@ -10,4 +10,18 @@ UML steht für [Unified Modeling Language](uml.md).
 
 ![](figures/Anwendungsfalldiagramm.png)
 
+## Anmeldeprozess
+
 ![](figures/Login.png)
+
+## Beitragsanfrage
+
+![](figures/Beitragsanfrage.png)
+
+## Beitrag hochladen
+
+![](figures/Beitrag hochladen.png)
+
+## Profilbild setzen
+
+![](figures/Profilbild setzen.png)
