@@ -3,7 +3,7 @@
 ![](/figures/datenanalyse.jpg)
 Bereitstellung von Daten[^1]
 
-## Lehrplan - Lernfeld 8
+## Lehrplan - Lernfeld 11
 
 ![](/figures/lp_bs_lb8.jpg)
 
