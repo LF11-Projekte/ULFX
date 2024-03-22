@@ -15,6 +15,7 @@
 .navbar {
     display: flex;
     position: fixed;
+    top: 0;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
