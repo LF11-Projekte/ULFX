@@ -10,4 +10,7 @@ export class User {
 
   @Column()
   description: string
+
+  @Column()
+  priveledges: number
 }

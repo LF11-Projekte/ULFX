@@ -6,5 +6,5 @@ export const AppDataSource = new DataSource({
   database: "AppDataSource.db",
   entities: [User],
   synchronize: true,
-  logging: false
+  logging: true
 });

@@ -1,9 +1,7 @@
 import express, { Express, Request, Response } from "express";
+import { Router } from "./Router";
 
 import { AppDataSource } from "./data-source";
-
-const app: Express = express();
-const port = 8000;
 
 AppDataSource.initialize()
   .then(() => {
@@ -13,6 +11,11 @@ AppDataSource.initialize()
     console.error("Error during Data Source initialization", err);
   });
 
+const app: Express = express();
+const port = 8000;
+
+app.use("/api", Router)
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
@@ -20,4 +23,3 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log("Express is listening on port ", port);
 });
-
