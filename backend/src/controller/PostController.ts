@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
+import { Post } from "../entities/Post";
+import { AppDataSource } from "../data-source";
+
 
 export const post_create = (req: Request, res: Response, ) => {
-
+    
 }
 
 /*
