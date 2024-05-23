@@ -1,7 +1,7 @@
 <script setup>
-    import NavigationBar from '@/components/NavigationBar.vue';
-    import SiteBar from "@/components/SiteBar.vue";
-    import PostEdit from '@/components/PostEdit.vue';
+    import NavigationBar from '../components/NavigationBar.vue';
+    import SiteBar from "../components/SiteBar.vue";
+    import PostEdit from '../components/PostEdit.vue';
 </script>
 
 <template>

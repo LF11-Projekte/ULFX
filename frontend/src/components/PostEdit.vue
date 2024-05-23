@@ -7,7 +7,7 @@
             <!-- Die Bearbeitungs-/textoptionen(Fett,Aufzählungen, Anhang,...)-->
         </div>
         <div class="text">
-            <!--import Beitragdaten aus Datenbank-->
+            <!--<input type="image; text">-->
             <p> Beitragsinhalt</p>
         </div>
         <div class="fixed">

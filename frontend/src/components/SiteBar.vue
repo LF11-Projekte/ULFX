@@ -5,7 +5,7 @@
     <div class="sitebar" style="position: fixed;">
         <div style="margin-top: 50%;">
             <div class="textbar">
-                <p> Beitrag <br> erstellen</p>
+                <RouterLink to="/edit-post" tag="li" style="text-decoration: none;"> Beitrag <br> erstellen</RouterLink>
             </div>
             <div class="textbar">
                 <p>Gespeicherte <br> Beiträge</p>

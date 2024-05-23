@@ -7,7 +7,7 @@
         <div style="margin: auto;">
             <input type="text" style="width: 600;">
         </div>
-        <img src="../assets/mountain_icon_126008.svg" style="height: var(--navbar-height); margin-right: 2.5%;">
+        <RouterLink to="/profile" tag="li"><img src="../assets/mountain_icon_126008.svg" style="height: var(--navbar-height); margin-right: 2.5%;"></RouterLink>
     </div>
 </template>
 

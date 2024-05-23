@@ -2,7 +2,7 @@
 import NavigationBar from '../components/NavigationBar.vue';
 import SiteBar from '../components/SiteBar.vue';
 import Articles from '../components/Articles.vue';
-/* import PostEdit from '@/components/PostEdit.vue';*/
+import ChangeName from '../components/ChangeName.vue'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import Articles from '../components/Articles.vue';
             <SiteBar />
         </div>
         <div class="menu-inner">
-            <Articles />
+            <!--<ChangeName />-->
             <Articles />
             <Articles />
             <Articles />
