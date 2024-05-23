@@ -7,11 +7,12 @@
             <!-- Die Bearbeitungs-/textoptionen(Fett,Aufzählungen, Anhang,...)-->
         </div>
         <div class="text">
+            <!--import Beitragdaten aus Datenbank-->
             <p> Beitragsinhalt</p>
         </div>
         <div class="fixed">
-        <button type="button" class="button">SAVE</button>
-        <button type="button" class="button">ABBRECHEN</button>
+        <RouterLink to="/" tag="li"><button type="button" class="button">SAVE</button></RouterLink>
+        <RouterLink to="/" tag="li"><button type="button" class="button">ABBRECHEN</button></RouterLink>
         </div>
     </div>
 </template>
@@ -21,7 +22,7 @@
 .box{
     display: flex;
     flex-direction: column;
-    height: 50%;
+    height: 85%;
     width: 85%;
     border: 2px solid black;
     border-radius: 10px;
@@ -30,9 +31,7 @@
 }
 .text{
     height: 70%;
-    width: 95%;
-    margin-left: 15px;
-    margin-top: 15px;
+    margin: 15px;
     border: 2px solid black;
     border-radius: 10px;
 }

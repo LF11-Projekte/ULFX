@@ -1,10 +1,11 @@
 <script setup>
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
     <div class="box">
         <div class="fixed">
-            <a href="../views/EditPost.vue"><img src="../assets/change.png" style="height: 0.7cm;"></a>
+            <RouterLink to="/edit-post" tag="li"><img src="../assets/change.png" style="height: 0.7cm;"></RouterLink>
             <p> Erstellungsdatum/Hochgeladen am DD.MM.YYYY</p>
         </div>
         <div style="display: flex; flex-direction: column; margin: 10px; font-size: 10px;">
@@ -15,7 +16,7 @@
         <div class="fixed">
             <p style="width: 30%;"> Benutzername des Verfassers</p>
             <div style="justify-content: center; width: 30%;">
-            <a href="../App.vue/"><img src="../assets/comment.png" style="height: 1cm; "></a>
+            <RouterLink to="/" tag="li"><img src="../assets/comment.png" style="height: 1cm; "></RouterLink>
             </div>
             <img src="../assets/saved.png" style="height: 0.6cm;">
         </div>   
