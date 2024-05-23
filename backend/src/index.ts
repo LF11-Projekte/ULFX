@@ -1,9 +1,12 @@
 import express, { Express, Request, Response } from "express";
-import Router from "./Router";
 import { AppDataSource } from "./data-source";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import swaggerUi from "swagger-ui-express";
+
+import { RegisterRoutes } from "./routes";
+
+import * as swaggerJson from "./swagger.json";
+import * as swaggerUi from "swagger-ui-express";
 
 AppDataSource.initialize()
   .then(() => {
@@ -24,18 +27,15 @@ app
   .use(express.json())
   .use(express.static("public"));
 
+RegisterRoutes(app);
 
-  app.use(
-    "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(undefined, {
-      swaggerOptions: {
-        url: "/swagger.json",
-      },
-    })
-  );
+app.use(
+  "/swagger",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerJson)
+);
 
-  app.use("/api", Router);
+
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
