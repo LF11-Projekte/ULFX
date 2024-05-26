@@ -1,0 +1,9 @@
+
+# Exclude IDE configurations
+.idea/
+.vs/
+.vscode/
+
+# Exclude node modules
+node_modules/
+
