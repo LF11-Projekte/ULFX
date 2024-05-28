@@ -6,5 +6,18 @@ export interface IUser extends IBaseEntry {
     description: string;
 }
 
-export type ICreateUserProps = Pick<IUser, "email" | "username" | "description">;
-export type ICreateUser = Pick<IUser, "id" | "email" | "username" | "description" | "creationDate" | "updateDate">;
+
+export type CreateIUserProps = Pick<IUser
+    , "email"
+    | "username"
+    | "description"
+>;
+
+export type CreateIUser = Pick<IUser
+    , "id"
+    | "email"
+    | "username"
+    | "description"
+    | "creationDate"
+    | "updateDate"
+>;
