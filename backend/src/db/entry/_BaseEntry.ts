@@ -1,13 +1,13 @@
-import {Column, PrimaryGeneratedColumn} from "typeorm";
+import {Column} from "typeorm";
 import {IBaseEntry} from "../../types/IBaseEntry";
 
 export class BaseEntry implements IBaseEntry {
-    @PrimaryGeneratedColumn()
-    public id!: number;
+    @Column({primary: true, generated: "uuid"})
+    public id!: string;
 
-    @Column("timestamp")
+    @Column("datetime")
     public creationDate!: Date;
 
-    @Column("timestamp")
+    @Column("datetime")
     public updateDate!: Date;
 }

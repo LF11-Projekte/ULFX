@@ -10,8 +10,7 @@
 			"IUser": {
 				"properties": {
 					"id": {
-						"type": "number",
-						"format": "double"
+						"type": "string"
 					},
 					"creationDate": {
 						"type": "string",

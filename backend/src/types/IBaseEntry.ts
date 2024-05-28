@@ -1,5 +1,5 @@
 export interface IBaseEntry {
-    id: number;
+    id: string;
     creationDate: Date;
     updateDate: Date;
 }

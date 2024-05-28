@@ -14,7 +14,7 @@ const models: TsoaRoute.Models = {
     "IUser": {
         "dataType": "refObject",
         "properties": {
-            "id": {"dataType":"double","required":true},
+            "id": {"dataType":"string","required":true},
             "creationDate": {"dataType":"datetime","required":true},
             "updateDate": {"dataType":"datetime","required":true},
             "email": {"dataType":"string","required":true},

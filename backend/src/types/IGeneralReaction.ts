@@ -1,7 +1,7 @@
 import {IBaseEntry} from "./IBaseEntry";
 import {IUser} from "./IUser";
 import {IPost} from "./IPost";
-import {IComment} from "./IComment";
+import {IGeneralComment} from "./IGeneralComment";
 
 export enum IGeneralReactionReferenceType {
     COMMENT,
@@ -15,8 +15,7 @@ export enum IGeneralReactionReactionType {
 
 export interface IGeneralReaction extends IBaseEntry {
     user: IUser;
-    reference: IComment | IPost;
-    referenceType: IGeneralReactionReferenceType;
+    reference: IGeneralComment | IPost;
     reactionType: IGeneralReactionReactionType;
 }
 
@@ -24,7 +23,6 @@ export interface IGeneralReaction extends IBaseEntry {
 export type CreateIGeneralReactionProps = Pick<IGeneralReaction
     , "user"
     | "reference"
-    | "referenceType"
     | "reactionType"
 >;
 
@@ -32,7 +30,6 @@ export type CreateIGeneralReaction = Pick<IGeneralReaction
     , "id"
     | "user"
     | "reference"
-    | "referenceType"
     | "reactionType"
     | "creationDate"
     | "updateDate"

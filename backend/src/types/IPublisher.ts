@@ -9,17 +9,23 @@ export enum IPublisherReferenceType {
 }
 
 export interface IPublisher {
-    object: IUser | IGroup | IChannel;
-    objectType: IPublisherReferenceType;
+    userReference: IUser | null;
+    groupReference: IGroup | null;
+    channelReference: IChannel | null;
+    referenceType: IPublisherReferenceType;
 }
 
 
 export type CreateIPublisherProps = Pick<IPublisher
-    , "object"
-    | "objectType"
+    , "userReference"
+    | "groupReference"
+    | "channelReference"
+    | "referenceType"
 >;
 
 export type CreateIPublisher= Pick<IPublisher
-    , "object"
-    | "objectType"
+    , "userReference"
+    | "groupReference"
+    | "channelReference"
+    | "referenceType"
 >;
