@@ -40,6 +40,29 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Pick_IUser.email-or-username-or-description_": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"username",
+					"description"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"CreateIUserProps": {
+				"$ref": "#/components/schemas/Pick_IUser.email-or-username-or-description_"
 			}
 		},
 		"securitySchemes": {}
@@ -52,7 +75,7 @@
 		}
 	},
 	"paths": {
-		"/User": {
+		"/User/getById/{userId}": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
@@ -68,7 +91,45 @@
 					}
 				},
 				"security": [],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/User/create": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateIUserProps"
+							}
+						}
+					}
+				}
 			}
 		}
 	},

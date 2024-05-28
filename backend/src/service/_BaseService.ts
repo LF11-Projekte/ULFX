@@ -10,13 +10,13 @@ export class BaseService<
         this.repository = repo;
     }
 
-    public async getById(id: number): Promise<IModel> {
+    public async getById(id: string): Promise<IModel> {
         const result = await this.repository.findOneBy({id: id as any});
         if (!result) throw new Error("NOT_FOUND");
         return result;
     }
 
-    public async deleteById(id: number): Promise<number> {
+    public async deleteById(id: string): Promise<string> {
         const result = await this.getById(id);
         await this.repository.delete({id: result.id as any});
         return id;
