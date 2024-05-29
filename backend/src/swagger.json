@@ -63,6 +63,191 @@
 			},
 			"CreateIUserProps": {
 				"$ref": "#/components/schemas/Pick_IUser.email-or-username-or-description_"
+			},
+			"IGroup": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"admins": {
+						"items": {
+							"$ref": "#/components/schemas/IUser"
+						},
+						"type": "array"
+					},
+					"members": {
+						"items": {
+							"$ref": "#/components/schemas/IUser"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"creationDate",
+					"updateDate",
+					"name",
+					"admins",
+					"members"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IChannel": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"creators": {
+						"items": {
+							"$ref": "#/components/schemas/IUser"
+						},
+						"type": "array"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"creationDate",
+					"updateDate",
+					"name",
+					"creators",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IPublisherReferenceType": {
+				"enum": [
+					0,
+					1,
+					2
+				],
+				"type": "number"
+			},
+			"IPublisher": {
+				"properties": {
+					"userReference": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/IUser"
+							}
+						],
+						"nullable": true
+					},
+					"groupReference": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/IGroup"
+							}
+						],
+						"nullable": true
+					},
+					"channelReference": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/IChannel"
+							}
+						],
+						"nullable": true
+					},
+					"referenceType": {
+						"$ref": "#/components/schemas/IPublisherReferenceType"
+					}
+				},
+				"required": [
+					"userReference",
+					"groupReference",
+					"channelReference",
+					"referenceType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISubscription": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"user": {
+						"$ref": "#/components/schemas/IUser"
+					},
+					"publisher": {
+						"$ref": "#/components/schemas/IPublisher"
+					}
+				},
+				"required": [
+					"id",
+					"creationDate",
+					"updateDate",
+					"user",
+					"publisher"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IEntryId": {
+				"properties": {
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_ISubscriptionKey.user-or-publisher_": {
+				"properties": {
+					"user": {
+						"$ref": "#/components/schemas/IEntryId"
+					},
+					"publisher": {
+						"$ref": "#/components/schemas/IEntryId"
+					}
+				},
+				"required": [
+					"user",
+					"publisher"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"ISubscriptionKeyProps": {
+				"$ref": "#/components/schemas/Pick_ISubscriptionKey.user-or-publisher_"
 			}
 		},
 		"securitySchemes": {}
@@ -75,9 +260,9 @@
 		}
 	},
 	"paths": {
-		"/User/getById/{userId}": {
+		"/User/{userId}": {
 			"get": {
-				"operationId": "GetUser",
+				"operationId": "Get",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -103,6 +288,28 @@
 				]
 			}
 		},
+		"/User": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/IUser"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/User/create": {
 			"post": {
 				"operationId": "Create",
@@ -126,6 +333,85 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/CreateIUserProps"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Subscription/{subscriptionId}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ISubscription"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "subscriptionId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Subscription": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ISubscription"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Subscription/create": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ISubscription"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ISubscriptionKeyProps"
 							}
 						}
 					}

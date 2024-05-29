@@ -1,6 +1,7 @@
 import {IBaseEntry} from "./IBaseEntry";
 import {IUser} from "./IUser";
 import {IPost} from "./IPost";
+import { IEntryId } from "./IEntryId";
 
 
 export interface IGeneralComment extends IBaseEntry {
@@ -8,7 +9,6 @@ export interface IGeneralComment extends IBaseEntry {
     reference: IGeneralComment | IPost;
     text: string;
 }
-
 
 export type CreateICommentProps = Pick<IGeneralComment
     , "user"
@@ -23,4 +23,17 @@ export type CreateIComment = Pick<IGeneralComment
     | "text"
     | "creationDate"
     | "updateDate"
+>;
+
+
+export interface IGeneralCommentKey extends IBaseEntry {
+    user: IEntryId;
+    reference: IEntryId;
+    text: string;
+}
+
+export type IGeneralCommentKeyProps = Pick<IGeneralCommentKey
+    , "user"
+    | "reference"
+    | "text"
 >;

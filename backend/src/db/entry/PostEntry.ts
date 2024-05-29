@@ -67,5 +67,5 @@ export class PostEntry extends BaseEntry implements IPost {
         type: "text",
         unique: false
     })
-    public images!: any;
+    public images!: string[];
 }
