@@ -3,9 +3,9 @@ import {BaseService} from "./_BaseService";
 import {appDataSource} from "../dataSource";
 import {IGeneralCommentKeyProps, IGeneralComment} from "../types/IGeneralComment";
 import { PostService } from "./PostService";
-import { IPost } from "src/types/IPost";
 import { UserService } from "./UserService";
-import { IUser } from "src/types/IUser";
+import { UserEntry } from "src/db/entry/UserEntry";
+import { PostEntry } from "src/db/entry/PostEntry";
 
 export class PostCommentService extends BaseService<PostCommentEntry> {
 
@@ -28,13 +28,13 @@ export class PostCommentService extends BaseService<PostCommentEntry> {
         let postComment = this.repository.create({
             creationDate: new Date(),
             updateDate: new Date(),
-            reference: postReference as IPost,
-            user: userService as IUser,
+            reference: postReference as PostEntry,
+            user: userService as UserEntry,
             text: postCommentProps.text
         });
 
-       postComment = await this.repository.save(postComment);
+        postComment = await this.repository.save(postComment);
 
-       return postComment as IGeneralComment;
+        return postComment as IGeneralComment;
     }
 }

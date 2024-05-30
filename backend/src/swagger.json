@@ -262,6 +262,33 @@
 			},
 			"ISubscriptionKeyProps": {
 				"$ref": "#/components/schemas/Pick_ISubscriptionKey.user-or-publisher_"
+			},
+			"Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_": {
+				"properties": {
+					"userReference": {
+						"$ref": "#/components/schemas/IEntryId"
+					},
+					"groupReference": {
+						"$ref": "#/components/schemas/IEntryId"
+					},
+					"channelReference": {
+						"$ref": "#/components/schemas/IEntryId"
+					},
+					"referenceType": {
+						"$ref": "#/components/schemas/IPublisherReferenceType"
+					}
+				},
+				"required": [
+					"userReference",
+					"groupReference",
+					"channelReference",
+					"referenceType"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"IPublisherKeyProps": {
+				"$ref": "#/components/schemas/Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_"
 			}
 		},
 		"securitySchemes": {}
@@ -426,6 +453,85 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/ISubscriptionKeyProps"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Publisher/{publisherId}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IPublisher"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "publisherId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Publisher": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/IPublisher"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Publisher/create": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IPublisher"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IPublisherKeyProps"
 							}
 						}
 					}

@@ -6,6 +6,8 @@ import { TsoaRoute, fetchMiddlewares, ExpressTemplateService } from '@tsoa/runti
 import { UserController } from './controller/UserController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { SubscriptionController } from './controller/SubscriptionController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { PublisherController } from './controller/PublisherController';
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
 
@@ -109,6 +111,16 @@ const models: TsoaRoute.Models = {
     "ISubscriptionKeyProps": {
         "dataType": "refAlias",
         "type": {"ref":"Pick_ISubscriptionKey.user-or-publisher_","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"userReference":{"ref":"IEntryId","required":true},"groupReference":{"ref":"IEntryId","required":true},"channelReference":{"ref":"IEntryId","required":true},"referenceType":{"ref":"IPublisherReferenceType","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IPublisherKeyProps": {
+        "dataType": "refAlias",
+        "type": {"ref":"Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
@@ -285,6 +297,95 @@ export function RegisterRoutes(app: Router) {
                 validatedArgs = templateService.getValidatedArgs({ args, request, response });
 
                 const controller = new SubscriptionController();
+
+              await templateService.apiHandler({
+                methodName: 'create',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/api/Publisher/:publisherId',
+            ...(fetchMiddlewares<RequestHandler>(PublisherController)),
+            ...(fetchMiddlewares<RequestHandler>(PublisherController.prototype.get)),
+
+            async function PublisherController_get(request: ExRequest, response: ExResponse, next: any) {
+            const args: Record<string, TsoaRoute.ParameterSchema> = {
+                    publisherId: {"in":"path","name":"publisherId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args, request, response });
+
+                const controller = new PublisherController();
+
+              await templateService.apiHandler({
+                methodName: 'get',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/api/Publisher',
+            ...(fetchMiddlewares<RequestHandler>(PublisherController)),
+            ...(fetchMiddlewares<RequestHandler>(PublisherController.prototype.getAll)),
+
+            async function PublisherController_getAll(request: ExRequest, response: ExResponse, next: any) {
+            const args: Record<string, TsoaRoute.ParameterSchema> = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args, request, response });
+
+                const controller = new PublisherController();
+
+              await templateService.apiHandler({
+                methodName: 'getAll',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/api/Publisher/create',
+            ...(fetchMiddlewares<RequestHandler>(PublisherController)),
+            ...(fetchMiddlewares<RequestHandler>(PublisherController.prototype.create)),
+
+            async function PublisherController_create(request: ExRequest, response: ExResponse, next: any) {
+            const args: Record<string, TsoaRoute.ParameterSchema> = {
+                    body: {"in":"body","name":"body","required":true,"ref":"IPublisherKeyProps"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args, request, response });
+
+                const controller = new PublisherController();
 
               await templateService.apiHandler({
                 methodName: 'create',

@@ -1,6 +1,6 @@
 import {ISubscription} from "../../types/ISubscription";
 import {BaseEntry} from "./_BaseEntry";
-import {Column, Entity, JoinColumn, OneToMany} from "typeorm";
+import {Column, Entity, JoinColumn, OneToOne} from "typeorm";
 import {UserEntry} from "./UserEntry";
 import {PublisherEntry} from "./PublisherEntry";
 
@@ -14,7 +14,7 @@ export class SubscriptionEntry extends BaseEntry implements ISubscription{
         type: "uuid",
         unique: false,
     })
-    @OneToMany(() => UserEntry, (user: UserEntry) => user.id)
+    @OneToOne(() => UserEntry, (user: UserEntry) => user.id)
     @JoinColumn()
     public user!: UserEntry;
 
@@ -24,7 +24,7 @@ export class SubscriptionEntry extends BaseEntry implements ISubscription{
         type: "uuid",
         unique: false,
     })
-    @OneToMany(
+    @OneToOne(
         () => PublisherEntry,
         (publisher: PublisherEntry) => publisher.id
     )

@@ -1,5 +1,5 @@
 import {BaseEntry} from "./_BaseEntry";
-import {Column, Entity, JoinColumn, OneToMany} from "typeorm";
+import {Column, Entity, JoinColumn, OneToOne} from "typeorm";
 import {IPublisher, IPublisherReferenceType} from "../../types/IPublisher";
 import {UserEntry} from "./UserEntry";
 import {GroupEntry} from "./GroupEntry";
@@ -13,7 +13,7 @@ export class PublisherEntry extends BaseEntry implements IPublisher {
         type: "uuid",
         unique: true
     })
-    @OneToMany(
+    @OneToOne(
         () => UserEntry,
         (reference: UserEntry) => reference.id
     )
@@ -26,7 +26,7 @@ export class PublisherEntry extends BaseEntry implements IPublisher {
         type: "uuid",
         unique: true
     })
-    @OneToMany(
+    @OneToOne(
         () => GroupEntry,
         (reference: GroupEntry) => reference.id
     )
@@ -39,7 +39,7 @@ export class PublisherEntry extends BaseEntry implements IPublisher {
         type: "uuid",
         unique: true
     })
-    @OneToMany(
+    @OneToOne(
         () => ChannelEntry,
         (reference: ChannelEntry) => reference.id
     )
