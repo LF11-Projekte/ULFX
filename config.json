@@ -1,0 +1,17 @@
+"UlfxConfig" : {
+	
+	"WebApp": {
+		"Host": "http://localhost",
+		"Port": "8080"
+	},
+
+	"Backend": {
+		"Host": "http://localhost",
+		"Port": "8081"
+	},
+
+	"UserManager": {
+		"Host": "http://10.100.0.170",
+		"Port": "3000"
+	}
+}
