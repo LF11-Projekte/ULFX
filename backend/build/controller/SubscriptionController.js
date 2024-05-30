@@ -21,17 +21,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostController = void 0;
+exports.SubscriptionController = void 0;
 const tsoa_1 = require("tsoa");
-const PostService_1 = require("../service/PostService");
-let PostController = class PostController extends tsoa_1.Controller {
+const SubscriptionService_1 = require("../service/SubscriptionService");
+let SubscriptionController = class SubscriptionController extends tsoa_1.Controller {
     constructor() {
         super(...arguments);
-        this.service = new PostService_1.PostService();
+        this.service = new SubscriptionService_1.SubscriptionService();
     }
-    get(postId) {
+    get(subscriptionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.getById(postId);
+            return yield this.service.getById(subscriptionId);
         });
     }
     getAll() {
@@ -44,42 +44,42 @@ let PostController = class PostController extends tsoa_1.Controller {
             return yield this.service.create(body);
         });
     }
-    delete(postId) {
+    delete(subscriptionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.deleteById(postId);
+            return yield this.service.deleteById(subscriptionId);
         });
     }
 };
-exports.PostController = PostController;
+exports.SubscriptionController = SubscriptionController;
 __decorate([
-    (0, tsoa_1.Get)("{postId}"),
+    (0, tsoa_1.Get)("{subscriptionId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "get", null);
+], SubscriptionController.prototype, "get", null);
 __decorate([
     (0, tsoa_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "getAll", null);
+], SubscriptionController.prototype, "getAll", null);
 __decorate([
     (0, tsoa_1.Post)("create"),
     __param(0, (0, tsoa_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "create", null);
+], SubscriptionController.prototype, "create", null);
 __decorate([
-    (0, tsoa_1.Delete)("{postId}"),
+    (0, tsoa_1.Delete)("{subscriptionId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "delete", null);
-exports.PostController = PostController = __decorate([
-    (0, tsoa_1.Route)("Post"),
-    (0, tsoa_1.Tags)("Post")
-], PostController);
-//# sourceMappingURL=PostController.js.map
+], SubscriptionController.prototype, "delete", null);
+exports.SubscriptionController = SubscriptionController = __decorate([
+    (0, tsoa_1.Route)("Subscription"),
+    (0, tsoa_1.Tags)("Subscriptions")
+], SubscriptionController);
+//# sourceMappingURL=SubscriptionController.js.map

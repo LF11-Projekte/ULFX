@@ -21,17 +21,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostController = void 0;
+exports.ReactionController = void 0;
 const tsoa_1 = require("tsoa");
-const PostService_1 = require("../service/PostService");
-let PostController = class PostController extends tsoa_1.Controller {
+const ReactionService_1 = require("../service/ReactionService");
+let ReactionController = class ReactionController extends tsoa_1.Controller {
     constructor() {
         super(...arguments);
-        this.service = new PostService_1.PostService();
+        this.service = new ReactionService_1.ReactionService();
     }
-    get(postId) {
+    get(reactionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.getById(postId);
+            return yield this.service.getById(reactionId);
+        });
+    }
+    getCountOf(referenceType, referenceId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const [likes, dislikes] = yield this.service.getReactionCountsOf(referenceType, referenceId);
+            return { likes, dislikes };
         });
     }
     getAll() {
@@ -39,47 +45,67 @@ let PostController = class PostController extends tsoa_1.Controller {
             return yield this.service.getAll();
         });
     }
+    getAllOfType(referenceType) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.service.getAllOfType(referenceType);
+        });
+    }
     create(body) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.service.create(body);
         });
     }
-    delete(postId) {
+    delete(reactionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.deleteById(postId);
+            return yield this.service.deleteById(reactionId);
         });
     }
 };
-exports.PostController = PostController;
+exports.ReactionController = ReactionController;
 __decorate([
-    (0, tsoa_1.Get)("{postId}"),
+    (0, tsoa_1.Get)("{reactionId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "get", null);
+], ReactionController.prototype, "get", null);
+__decorate([
+    (0, tsoa_1.Get)("{referenceType}/{referenceId}"),
+    __param(0, (0, tsoa_1.Path)()),
+    __param(1, (0, tsoa_1.Path)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], ReactionController.prototype, "getCountOf", null);
 __decorate([
     (0, tsoa_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "getAll", null);
+], ReactionController.prototype, "getAll", null);
+__decorate([
+    (0, tsoa_1.Get)("{referenceType}/all"),
+    __param(0, (0, tsoa_1.Path)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ReactionController.prototype, "getAllOfType", null);
 __decorate([
     (0, tsoa_1.Post)("create"),
     __param(0, (0, tsoa_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "create", null);
+], ReactionController.prototype, "create", null);
 __decorate([
-    (0, tsoa_1.Delete)("{postId}"),
+    (0, tsoa_1.Delete)("{reactionId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "delete", null);
-exports.PostController = PostController = __decorate([
-    (0, tsoa_1.Route)("Post"),
-    (0, tsoa_1.Tags)("Post")
-], PostController);
-//# sourceMappingURL=PostController.js.map
+], ReactionController.prototype, "delete", null);
+exports.ReactionController = ReactionController = __decorate([
+    (0, tsoa_1.Route)("Reaction"),
+    (0, tsoa_1.Tags)("Reaction")
+], ReactionController);
+//# sourceMappingURL=ReactionController.js.map
