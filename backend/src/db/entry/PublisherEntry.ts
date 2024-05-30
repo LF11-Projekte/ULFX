@@ -1,40 +1,19 @@
-import {BaseEntry} from "./_BaseEntry";
-import {Column, Entity, JoinColumn} from "typeorm";
-import {IPublisher, IPublisherReferenceType} from "../../types/IPublisher";
-import {UserEntry} from "./UserEntry";
-import {GroupEntry} from "./GroupEntry";
-import {ChannelEntry} from "./ChannelEntry";
+import { BaseEntry } from "./_BaseEntry";
+import { Column, Entity } from "typeorm";
+import { IPublisher } from "../../types/IPublisher";
 
 @Entity("Publisher")
 export class PublisherEntry extends BaseEntry implements IPublisher {
+	@Column({
+		nullable: true,
+		type: "uuid",
+	})
+	public referenceId!: string;
 
-    @Column({
-        nullable: true,
-        type: "uuid",
-    })
-    @JoinColumn()
-    public userReference!: UserEntry;
+	@Column({
+		nullable: false,
+		type: "text",
+	})
+	public referenceType!: "USER" | "GROUP" | "CHANNEL";
 
-
-    @Column({
-        nullable: true,
-        type: "uuid",
-    })
-    @JoinColumn()
-    public groupReference!: GroupEntry;
-
-
-    @Column({
-        nullable: true,
-        type: "uuid",
-    })
-    @JoinColumn()
-    public channelReference!: ChannelEntry;
-
-
-    @Column({
-        nullable: false,
-        type: "int",
-    })
-    public referenceType!: IPublisherReferenceType;
 }

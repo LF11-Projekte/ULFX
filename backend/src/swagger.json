@@ -61,131 +61,8 @@
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"CreateIUserProps": {
+			"IUserProps": {
 				"$ref": "#/components/schemas/Pick_IUser.email-or-username-or-description_"
-			},
-			"IGroup": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"creationDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"updateDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"name": {
-						"type": "string"
-					},
-					"admins": {
-						"items": {
-							"$ref": "#/components/schemas/IUser"
-						},
-						"type": "array"
-					},
-					"members": {
-						"items": {
-							"$ref": "#/components/schemas/IUser"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"creationDate",
-					"updateDate",
-					"name",
-					"admins",
-					"members"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IChannel": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"creationDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"updateDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"name": {
-						"type": "string"
-					},
-					"creators": {
-						"items": {
-							"$ref": "#/components/schemas/IUser"
-						},
-						"type": "array"
-					},
-					"description": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"creationDate",
-					"updateDate",
-					"name",
-					"creators",
-					"description"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IPublisherReferenceType": {
-				"enum": [
-					0,
-					1,
-					2
-				],
-				"type": "number"
-			},
-			"IPublisher": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"creationDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"updateDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"userReference": {
-						"$ref": "#/components/schemas/IUser"
-					},
-					"groupReference": {
-						"$ref": "#/components/schemas/IGroup"
-					},
-					"channelReference": {
-						"$ref": "#/components/schemas/IChannel"
-					},
-					"referenceType": {
-						"$ref": "#/components/schemas/IPublisherReferenceType"
-					}
-				},
-				"required": [
-					"id",
-					"creationDate",
-					"updateDate",
-					"userReference",
-					"groupReference",
-					"channelReference",
-					"referenceType"
-				],
-				"type": "object",
-				"additionalProperties": false
 			},
 			"ISubscription": {
 				"properties": {
@@ -200,80 +77,181 @@
 						"type": "string",
 						"format": "date-time"
 					},
-					"user": {
-						"$ref": "#/components/schemas/IUser"
+					"userId": {
+						"type": "string"
 					},
-					"publisher": {
-						"$ref": "#/components/schemas/IPublisher"
+					"publisherId": {
+						"type": "string"
 					}
 				},
 				"required": [
 					"id",
 					"creationDate",
 					"updateDate",
-					"user",
-					"publisher"
+					"userId",
+					"publisherId"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"IEntryId": {
+			"Pick_ISubscription.userId-or-publisherId_": {
 				"properties": {
-					"id": {
+					"userId": {
+						"type": "string"
+					},
+					"publisherId": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"id"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Pick_ISubscriptionKey.user-or-publisher_": {
-				"properties": {
-					"user": {
-						"$ref": "#/components/schemas/IEntryId"
-					},
-					"publisher": {
-						"$ref": "#/components/schemas/IEntryId"
-					}
-				},
-				"required": [
-					"user",
-					"publisher"
+					"userId",
+					"publisherId"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"ISubscriptionKeyProps": {
-				"$ref": "#/components/schemas/Pick_ISubscriptionKey.user-or-publisher_"
+			"ISubscriptionProps": {
+				"$ref": "#/components/schemas/Pick_ISubscription.userId-or-publisherId_"
 			},
-			"Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_": {
+			"IReaction": {
 				"properties": {
-					"userReference": {
-						"$ref": "#/components/schemas/IEntryId"
+					"id": {
+						"type": "string"
 					},
-					"groupReference": {
-						"$ref": "#/components/schemas/IEntryId"
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
 					},
-					"channelReference": {
-						"$ref": "#/components/schemas/IEntryId"
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"referenceId": {
+						"type": "string"
 					},
 					"referenceType": {
-						"$ref": "#/components/schemas/IPublisherReferenceType"
+						"type": "string",
+						"enum": [
+							"COMMENT",
+							"POST"
+						]
+					},
+					"reactionType": {
+						"type": "string",
+						"enum": [
+							"LIKE",
+							"DISLIKE"
+						]
 					}
 				},
 				"required": [
-					"userReference",
-					"groupReference",
-					"channelReference",
+					"id",
+					"creationDate",
+					"updateDate",
+					"userId",
+					"referenceId",
+					"referenceType",
+					"reactionType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_IReaction.userId-or-referenceId-or-referenceType-or-reactionType_": {
+				"properties": {
+					"userId": {
+						"type": "string"
+					},
+					"referenceId": {
+						"type": "string"
+					},
+					"referenceType": {
+						"type": "string",
+						"enum": [
+							"COMMENT",
+							"POST"
+						]
+					},
+					"reactionType": {
+						"type": "string",
+						"enum": [
+							"LIKE",
+							"DISLIKE"
+						]
+					}
+				},
+				"required": [
+					"userId",
+					"referenceId",
+					"referenceType",
+					"reactionType"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"IReactionProps": {
+				"$ref": "#/components/schemas/Pick_IReaction.userId-or-referenceId-or-referenceType-or-reactionType_"
+			},
+			"IPublisher": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"referenceId": {
+						"type": "string"
+					},
+					"referenceType": {
+						"type": "string",
+						"enum": [
+							"USER",
+							"GROUP",
+							"CHANNEL"
+						]
+					}
+				},
+				"required": [
+					"id",
+					"creationDate",
+					"updateDate",
+					"referenceId",
+					"referenceType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_IPublisher.referenceId-or-referenceType_": {
+				"properties": {
+					"referenceId": {
+						"type": "string"
+					},
+					"referenceType": {
+						"type": "string",
+						"enum": [
+							"USER",
+							"GROUP",
+							"CHANNEL"
+						]
+					}
+				},
+				"required": [
+					"referenceId",
 					"referenceType"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"IPublisherKeyProps": {
-				"$ref": "#/components/schemas/Pick_IPublisherKey.userReference-or-groupReference-or-channelReference-or-referenceType_"
+			"IPublisherProps": {
+				"$ref": "#/components/schemas/Pick_IPublisher.referenceId-or-referenceType_"
 			},
 			"IPost": {
 				"properties": {
@@ -291,15 +269,15 @@
 					"title": {
 						"type": "string"
 					},
-					"publisher": {
-						"$ref": "#/components/schemas/IPublisher"
+					"publisherId": {
+						"type": "string"
 					},
-					"creator": {
-						"$ref": "#/components/schemas/IUser"
+					"creatorId": {
+						"type": "string"
 					},
-					"editors": {
+					"editorIds": {
 						"items": {
-							"$ref": "#/components/schemas/IUser"
+							"type": "string"
 						},
 						"type": "array"
 					},
@@ -318,29 +296,29 @@
 					"creationDate",
 					"updateDate",
 					"title",
-					"publisher",
-					"creator",
-					"editors",
+					"publisherId",
+					"creatorId",
+					"editorIds",
 					"images",
 					"text"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_IPostKey.title-or-publisher-or-creator-or-editors-or-images-or-text_": {
+			"Pick_IPost.title-or-publisherId-or-creatorId-or-editorIds-or-images-or-text_": {
 				"properties": {
-					"publisher": {
-						"$ref": "#/components/schemas/IEntryId"
+					"publisherId": {
+						"type": "string"
 					},
 					"title": {
 						"type": "string"
 					},
-					"creator": {
-						"$ref": "#/components/schemas/IEntryId"
+					"creatorId": {
+						"type": "string"
 					},
-					"editors": {
+					"editorIds": {
 						"items": {
-							"$ref": "#/components/schemas/IEntryId"
+							"type": "string"
 						},
 						"type": "array"
 					},
@@ -355,20 +333,20 @@
 					}
 				},
 				"required": [
-					"publisher",
+					"publisherId",
 					"title",
-					"creator",
-					"editors",
+					"creatorId",
+					"editorIds",
 					"images",
 					"text"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"IPostKeyProps": {
-				"$ref": "#/components/schemas/Pick_IPostKey.title-or-publisher-or-creator-or-editors-or-images-or-text_"
+			"IPostProps": {
+				"$ref": "#/components/schemas/Pick_IPost.title-or-publisherId-or-creatorId-or-editorIds-or-images-or-text_"
 			},
-			"IGeneralComment": {
+			"IGroup": {
 				"properties": {
 					"id": {
 						"type": "string"
@@ -381,94 +359,63 @@
 						"type": "string",
 						"format": "date-time"
 					},
-					"user": {
-						"$ref": "#/components/schemas/IUser"
-					},
-					"reference": {
-						"anyOf": [
-							{
-								"$ref": "#/components/schemas/IGeneralComment"
-							},
-							{
-								"$ref": "#/components/schemas/IPost"
-							}
-						]
-					},
-					"text": {
+					"name": {
 						"type": "string"
+					},
+					"adminIds": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"memberIds": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
 					"id",
 					"creationDate",
 					"updateDate",
-					"user",
-					"reference",
-					"text"
+					"name",
+					"adminIds",
+					"memberIds"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_IGeneralCommentKey.user-or-reference-or-text_": {
-				"properties": {
-					"user": {
-						"$ref": "#/components/schemas/IEntryId"
-					},
-					"text": {
-						"type": "string"
-					},
-					"reference": {
-						"$ref": "#/components/schemas/IEntryId"
-					}
-				},
-				"required": [
-					"user",
-					"text",
-					"reference"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"IGeneralCommentKeyProps": {
-				"$ref": "#/components/schemas/Pick_IGeneralCommentKey.user-or-reference-or-text_"
-			},
-			"Pick_IGroupKey.name-or-admins-or-members_": {
+			"Pick_IGroup.name-or-adminIds-or-memberIds_": {
 				"properties": {
 					"name": {
 						"type": "string"
 					},
-					"admins": {
+					"adminIds": {
 						"items": {
-							"$ref": "#/components/schemas/IEntryId"
+							"type": "string"
 						},
 						"type": "array"
 					},
-					"members": {
+					"memberIds": {
 						"items": {
-							"$ref": "#/components/schemas/IEntryId"
+							"type": "string"
 						},
 						"type": "array"
 					}
 				},
 				"required": [
 					"name",
-					"admins",
-					"members"
+					"adminIds",
+					"memberIds"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"IGroupKeyProps": {
-				"$ref": "#/components/schemas/Pick_IGroupKey.name-or-admins-or-members_"
+			"IGroupProps": {
+				"$ref": "#/components/schemas/Pick_IGroup.name-or-adminIds-or-memberIds_"
 			},
-			"IGeneralReactionReactionType": {
-				"enum": [
-					0,
-					1
-				],
-				"type": "number"
-			},
-			"IGeneralReaction": {
+			"IComment": {
 				"properties": {
 					"id": {
 						"type": "string"
@@ -481,56 +428,65 @@
 						"type": "string",
 						"format": "date-time"
 					},
-					"user": {
-						"$ref": "#/components/schemas/IUser"
+					"userId": {
+						"type": "string"
 					},
-					"reference": {
-						"anyOf": [
-							{
-								"$ref": "#/components/schemas/IGeneralComment"
-							},
-							{
-								"$ref": "#/components/schemas/IPost"
-							}
+					"referenceId": {
+						"type": "string"
+					},
+					"referenceType": {
+						"type": "string",
+						"enum": [
+							"COMMENT",
+							"POST"
 						]
 					},
-					"reactionType": {
-						"$ref": "#/components/schemas/IGeneralReactionReactionType"
+					"text": {
+						"type": "string"
 					}
 				},
 				"required": [
 					"id",
 					"creationDate",
 					"updateDate",
-					"user",
-					"reference",
-					"reactionType"
+					"userId",
+					"referenceId",
+					"referenceType",
+					"text"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_IGeneralReactionKey.user-or-reference-or-reactionType_": {
+			"Pick_IComment.userId-or-referenceId-or-referenceType-or-text_": {
 				"properties": {
-					"user": {
-						"$ref": "#/components/schemas/IEntryId"
+					"userId": {
+						"type": "string"
 					},
-					"reference": {
-						"$ref": "#/components/schemas/IEntryId"
+					"referenceId": {
+						"type": "string"
 					},
-					"reactionType": {
-						"$ref": "#/components/schemas/IGeneralReactionReactionType"
+					"referenceType": {
+						"type": "string",
+						"enum": [
+							"COMMENT",
+							"POST"
+						]
+					},
+					"text": {
+						"type": "string"
 					}
 				},
 				"required": [
-					"user",
-					"reference",
-					"reactionType"
+					"userId",
+					"referenceId",
+					"referenceType",
+					"text"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"IGeneralReactionKeyProps": {
-				"$ref": "#/components/schemas/Pick_IGeneralReactionKey.user-or-reference-or-reactionType_"
+			"ICommentProps": {
+				"$ref": "#/components/schemas/Pick_IComment.userId-or-referenceId-or-referenceType-or-text_"
 			}
 		},
 		"securitySchemes": {}
@@ -552,7 +508,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IUser"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IUser"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -612,10 +578,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IUser"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IUser"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -653,7 +629,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateIUserProps"
+								"$ref": "#/components/schemas/IUserProps"
 							}
 						}
 					}
@@ -669,7 +645,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ISubscription"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/ISubscription"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -729,10 +715,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/ISubscription"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/ISubscription"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -770,7 +766,249 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ISubscriptionKeyProps"
+								"$ref": "#/components/schemas/ISubscriptionProps"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Reaction/{reactionId}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IReaction"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "reactionId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "reactionId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Reaction/{referenceType}/{referenceId}": {
+			"get": {
+				"operationId": "GetCountOf",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"dislikes": {
+											"type": "number",
+											"format": "double"
+										},
+										"likes": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"dislikes",
+										"likes"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "referenceType",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"COMMENT",
+								"POST"
+							]
+						}
+					},
+					{
+						"in": "path",
+						"name": "referenceId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Reaction": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IReaction"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Reaction/{referenceType}/all": {
+			"get": {
+				"operationId": "GetAllOfType",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IReaction"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "referenceType",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"POST",
+								"COMMENT"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/Reaction/create": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IReaction"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reaction"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IReactionProps"
 							}
 						}
 					}
@@ -786,7 +1024,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPublisher"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IPublisher"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -846,10 +1094,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IPublisher"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IPublisher"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -887,7 +1145,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IPublisherKeyProps"
+								"$ref": "#/components/schemas/IPublisherProps"
 							}
 						}
 					}
@@ -903,7 +1161,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPost"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IPost"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -963,10 +1231,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IPost"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IPost"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -1004,7 +1282,144 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IPostKeyProps"
+								"$ref": "#/components/schemas/IPostProps"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Group/{groupId}": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IGroup"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "groupId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "groupId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Group": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IGroup"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Group/create": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IGroup"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Group"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IGroupProps"
 							}
 						}
 					}
@@ -1020,7 +1435,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IGeneralComment"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IComment"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -1080,10 +1505,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IGeneralComment"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IComment"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string",
+											"enum": [
+												"NOT_FOUND"
+											]
+										}
+									]
 								}
 							}
 						}
@@ -1105,7 +1540,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IGeneralComment"
+									"$ref": "#/components/schemas/IComment"
 								}
 							}
 						}
@@ -1121,448 +1556,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IGeneralCommentKeyProps"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/Group/{userId}": {
-			"get": {
-				"operationId": "Get",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGroup"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Group"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "userId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "boolean"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Group"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "userId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/Group": {
-			"get": {
-				"operationId": "GetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IGroup"
-									},
-									"type": "array"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Group"
-				],
-				"security": [],
-				"parameters": []
-			}
-		},
-		"/Group/create": {
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGroup"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Group"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IGroupKeyProps"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/Reaction/Comment/{reactionId}": {
-			"get": {
-				"operationId": "Get",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGeneralReaction"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"CommentReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "reactionId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "boolean"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"CommentReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "reactionId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/Reaction/Comment/CountOf/{commentId}": {
-			"get": {
-				"operationId": "GetCountOf",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"dislikes": {
-											"type": "number",
-											"format": "double"
-										},
-										"likes": {
-											"type": "number",
-											"format": "double"
-										}
-									},
-									"required": [
-										"dislikes",
-										"likes"
-									],
-									"type": "object"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"CommentReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "commentId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/Reaction/Comment": {
-			"get": {
-				"operationId": "GetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IGeneralReaction"
-									},
-									"type": "array"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"CommentReaction"
-				],
-				"security": [],
-				"parameters": []
-			}
-		},
-		"/Reaction/Comment/create": {
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGeneralReaction"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"CommentReaction"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IGeneralReactionKeyProps"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/Reaction/Post/{reactionId}": {
-			"get": {
-				"operationId": "Get",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGeneralReaction"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"PostReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "reactionId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "boolean"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"PostReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "reactionId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/Reaction/Post/CountOf/{postId}": {
-			"get": {
-				"operationId": "GetCountOf",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"dislikes": {
-											"type": "number",
-											"format": "double"
-										},
-										"likes": {
-											"type": "number",
-											"format": "double"
-										}
-									},
-									"required": [
-										"dislikes",
-										"likes"
-									],
-									"type": "object"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"PostReaction"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "postId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/Reaction/Post": {
-			"get": {
-				"operationId": "GetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IGeneralReaction"
-									},
-									"type": "array"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"PostReaction"
-				],
-				"security": [],
-				"parameters": []
-			}
-		},
-		"/Reaction/Post/create": {
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IGeneralReaction"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"PostReaction"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IGeneralReactionKeyProps"
+								"$ref": "#/components/schemas/ICommentProps"
 							}
 						}
 					}

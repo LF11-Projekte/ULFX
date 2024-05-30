@@ -1,37 +1,18 @@
-import {IBaseEntry} from "./IBaseEntry";
-import {IUser} from "./IUser";
-import {IEntryId} from "./IEntryId"
+import { IBaseEntry } from "./IBaseEntry";
+import { IUser } from "./IUser";
 
 export interface IGroup extends IBaseEntry {
-    name: string;
-    admins: IUser[];
-    members: IUser[];
+	name: string;
+	adminIds: string[];
+	memberIds: string[];
 }
 
-export type CreateIGroupProps = Pick<IGroup
-    , "name"
-    | "admins"
-    | "members"
->;
+export type IGroupProps = Pick<IGroup, "name" | "adminIds" | "memberIds">;
 
-export type CreateIGroup = Pick<IGroup
-    , "id"
-    | "name"
-    | "admins"
-    | "members"
-    | "creationDate"
-    | "updateDate"
->;
+export type CreateIGroup = Pick<IGroup, "id" | "name" | "adminIds" | "memberIds" | "creationDate" | "updateDate">;
 
-
-export interface IGroupKey extends IBaseEntry {
-    name: string;
-    admins: IEntryId[];
-    members: IEntryId[];
+export interface IGroupExpanded extends IBaseEntry {
+	name: string;
+	admins: IUser[];
+	members: IUser[];
 }
-
-export type IGroupKeyProps = Pick<IGroupKey
-    , "name"
-    | "admins"
-    | "members"
->;

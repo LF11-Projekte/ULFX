@@ -1,33 +1,16 @@
-import {IBaseEntry} from "./IBaseEntry";
-import {IUser} from "./IUser";
-import {IPublisher} from "./IPublisher";
-import { IEntryId } from "./IEntryId";
+import { IBaseEntry } from "./IBaseEntry";
+import { IUser } from "./IUser";
+import { IPublisher } from "./IPublisher";
 
 export interface ISubscription extends IBaseEntry {
-    user: IUser;
-    publisher: IPublisher;
+	userId: string;
+	publisherId: string;
 }
+export type ISubscriptionProps = Pick<ISubscription, "userId" | "publisherId">;
 
-export type CreateISubscriptionProps = Pick<ISubscription
-    , "user"
-    | "publisher"
->;
+export type CreateISubscription = Pick<ISubscription, "id" | "userId" | "publisherId" | "creationDate" | "updateDate">;
 
-export type CreateISubscription = Pick<ISubscription
-    , "id"
-    | "user"
-    | "publisher"
-    | "creationDate"
-    | "updateDate"
->;
-
-
-export interface ISubscriptionKey extends IBaseEntry {
-    user: IEntryId;
-    publisher: IEntryId;
+export interface ISubscriptionExpanded extends IBaseEntry {
+	userId: IUser;
+	publisherId: IPublisher;
 }
-
-export type ISubscriptionKeyProps = Pick<ISubscriptionKey
-    , "user"
-    | "publisher"
->;
