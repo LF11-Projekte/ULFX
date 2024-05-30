@@ -1,5 +1,5 @@
 import {BaseEntry} from "./_BaseEntry";
-import {Column, Entity, JoinColumn, ManyToMany, ManyToOne} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToOne} from "typeorm";
 import {IPost} from "../../types/IPost";
 import {PublisherEntry} from "./PublisherEntry";
 import {UserEntry} from "./UserEntry";
@@ -20,7 +20,7 @@ export class PostEntry extends BaseEntry implements IPost {
         type: "uuid",
         unique: false
     })
-    @ManyToOne(
+    @OneToOne(
         () => PublisherEntry,
         (publisher: PublisherEntry) => publisher.id
     )
@@ -46,7 +46,7 @@ export class PostEntry extends BaseEntry implements IPost {
         type: "uuid",
         unique: false
     })
-    @ManyToMany(
+    @OneToOne(
         () => UserEntry,
         (user: UserEntry) => user.id
     )

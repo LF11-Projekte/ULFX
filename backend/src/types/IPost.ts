@@ -36,7 +36,7 @@ export type CreateIPost = Pick<IPost
 
 export interface IPostKey extends IBaseEntry {
     title: string;              // Title of Post
-    publisher: IPublisher;      // Channel or user that publishes the post
+    publisher: IEntryId;        // Channel or user that publishes the post
     creator: IEntryId;          // Person who writes if publisher is IUser creator = publisher
     editors: IEntryId[];        // All persons who ever edited the post
     images: string[];           // Images that are been used in post

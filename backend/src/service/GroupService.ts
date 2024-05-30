@@ -1,14 +1,14 @@
 import {GroupEntry} from "../db/entry/GroupEntry";
 import {BaseService} from "./_BaseService";
 import {appDataSource} from "../dataSource";
-import {CreateIGroupProps, IGroup} from "../types/IGroup";
+import {IGroup, IGroupKeyProps} from "../types/IGroup";
 
 export class GroupService extends BaseService<GroupEntry> {
     constructor() {
-        super(appDataSource.getRepository(GroupEntry));
+        super(appDataSource.getRepository(GroupEntry), ["User"]);
     }
 
-    public async create(groupProps: CreateIGroupProps) : Promise<IGroup> {
+    public async create(groupProps: IGroupKeyProps) : Promise<IGroup> {
        let group = this.repository.create({
            creationDate : new Date(),
            updateDate : new Date(),

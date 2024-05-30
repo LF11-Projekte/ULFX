@@ -21,7 +21,7 @@ export class PublisherService extends BaseService<PublisherEntry> {
 
 
     constructor() {
-        super(appDataSource.getRepository(PublisherEntry));
+        super(appDataSource.getRepository(PublisherEntry), ["User", "Group", "Channel"]);
     }
 
 
@@ -61,7 +61,7 @@ export class PublisherService extends BaseService<PublisherEntry> {
 
        publisher = await this.repository.save(publisher);
 
-       return publisher;
+       return publisher as IPublisher;
     }
 
 }

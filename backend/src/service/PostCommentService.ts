@@ -14,7 +14,7 @@ export class PostCommentService extends BaseService<PostCommentEntry> {
 
 
     constructor() {
-        super(appDataSource.getRepository(PostCommentEntry));
+        super(appDataSource.getRepository(PostCommentEntry), ["Post", "User", "Publisher"]);
     }
 
     public async create(postCommentProps: IGeneralCommentKeyProps) : Promise<IGeneralComment> {

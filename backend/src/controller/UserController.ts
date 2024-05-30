@@ -1,9 +1,10 @@
-import {Controller, Route, Get, Body, Post, Path} from "tsoa";
+import {Controller, Route, Get, Body, Post, Path, Delete, Tags} from "tsoa";
 import {CreateIUserProps, IUser} from "../types/IUser";
 import {UserService} from "../service/UserService";
 
 
 @Route("User")
+@Tags("User")
 export class UserController extends Controller {
 
     private service = new UserService();
@@ -22,5 +23,10 @@ export class UserController extends Controller {
     @Post("create")
     public async create(@Body() body: CreateIUserProps) : Promise<IUser> {
         return await this.service.create(body as CreateIUserProps);
+    }
+
+    @Delete("{userId}")
+    public async delete(@Path() userId: string) : Promise<boolean> {
+        return await this.service.deleteById(userId);
     }
 }

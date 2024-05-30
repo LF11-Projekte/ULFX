@@ -6,7 +6,7 @@ import { IEntryId } from "src/types/IEntryId";
 
 export class UserService extends BaseService<UserEntry> {
     constructor() {
-        super(appDataSource.getRepository(UserEntry));
+        super(appDataSource.getRepository(UserEntry), []);
     }
 
     public async create(userProps: CreateIUserProps) : Promise<IUser> {
@@ -24,10 +24,10 @@ export class UserService extends BaseService<UserEntry> {
     public async getByIds(ids: IEntryId[]) : Promise<IUser[]> {
         let users = new Array<IUser>();
 
-        ids.forEach(async id => {
+        for (const id of ids) {
             let user = await this.repository.findOneBy({ id: id.id });
             if(user) users.push(user);
-        });
+        }
 
         if(!users.length) throw Error("NOT_FOUND");
 

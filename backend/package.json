@@ -4,7 +4,7 @@
   "author": "Karl Jahn",
   "main": "./build/server.js",
   "scripts": {
-    "build": "tsoa spec-and-routes && tsc",
+    "build": "tsoa spec-and-routes && jsonsort swagger.json --array && tsc",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "start": "pm2-runtime start ecosystem.config.js",
     "lint": "eslint \"src/**/*.*\"",

@@ -5,7 +5,7 @@ import {CreateIChannelProps, IChannel} from "../types/IChannel";
 
 export class ChannelService extends BaseService<ChannelEntry> {
     constructor() {
-        super(appDataSource.getRepository(ChannelEntry));
+        super(appDataSource.getRepository(ChannelEntry), []);
     }
 
     public async create(channelProps: CreateIChannelProps) : Promise<IChannel> {

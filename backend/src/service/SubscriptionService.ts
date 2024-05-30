@@ -12,7 +12,7 @@ export class SubscriptionService extends BaseService<SubscriptionEntry> {
 
 
     constructor() {
-        super(appDataSource.getRepository(SubscriptionEntry));
+        super(appDataSource.getRepository(SubscriptionEntry), ["User", "Publisher"]);
     }
     
 

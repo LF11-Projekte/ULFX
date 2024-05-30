@@ -11,9 +11,9 @@ export enum IPublisherReferenceType {
 }
 
 export interface IPublisher extends IBaseEntry {
-    userReference: IUser | null;
-    groupReference: IGroup | null;
-    channelReference: IChannel | null;
+    userReference: IUser;
+    groupReference: IGroup;
+    channelReference: IChannel;
     referenceType: IPublisherReferenceType;
 }
 
