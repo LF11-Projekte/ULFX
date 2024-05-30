@@ -1,7 +1,7 @@
 import {IBaseEntry} from "./IBaseEntry";
 import {IUser} from "./IUser";
 import {IPublisher} from "./IPublisher";
-import { IEntryId } from "./IEntryId";
+import {IEntryId} from "./IEntryId";
 
 export interface IPost extends IBaseEntry {
     title: string;              // Title of Post
@@ -21,7 +21,7 @@ export type CreateIPostProps = Pick<IPost
     | "text"
 >;
 
-export type CreateIPost= Pick<IPost
+export type CreateIPost = Pick<IPost
     , "id"
     | "title"
     | "publisher"

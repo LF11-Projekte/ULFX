@@ -2,6 +2,7 @@ import {IUser} from "./IUser";
 import {IGroup} from "./IGroup";
 import {IChannel} from "./IChannel";
 import { IEntryId } from "./IEntryId";
+import { IBaseEntry } from "./IBaseEntry";
 
 export enum IPublisherReferenceType {
     USER,
@@ -9,7 +10,7 @@ export enum IPublisherReferenceType {
     CHANNEL
 }
 
-export interface IPublisher {
+export interface IPublisher extends IBaseEntry {
     userReference: IUser | null;
     groupReference: IGroup | null;
     channelReference: IChannel | null;
@@ -24,14 +25,17 @@ export type CreateIPublisherProps = Pick<IPublisher
 >;
 
 export type CreateIPublisher= Pick<IPublisher
-    , "userReference"
+    , "id"
+    | "creationDate"
+    | "updateDate"
+    | "userReference"
     | "groupReference"
     | "channelReference"
     | "referenceType"
 >;
 
 
-export interface IPublisherKey {
+export interface IPublisherKey extends IBaseEntry {
     userReference: IEntryId | null;
     groupReference: IEntryId | null;
     channelReference: IEntryId | null;

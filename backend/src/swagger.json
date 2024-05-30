@@ -151,6 +151,17 @@
 			},
 			"IPublisher": {
 				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string",
+						"format": "date-time"
+					},
 					"userReference": {
 						"allOf": [
 							{
@@ -180,6 +191,9 @@
 					}
 				},
 				"required": [
+					"id",
+					"creationDate",
+					"updateDate",
 					"userReference",
 					"groupReference",
 					"channelReference",

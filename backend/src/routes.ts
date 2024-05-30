@@ -70,6 +70,9 @@ const models: TsoaRoute.Models = {
     "IPublisher": {
         "dataType": "refObject",
         "properties": {
+            "id": {"dataType":"string","required":true},
+            "creationDate": {"dataType":"datetime","required":true},
+            "updateDate": {"dataType":"datetime","required":true},
             "userReference": {"dataType":"union","subSchemas":[{"ref":"IUser"},{"dataType":"enum","enums":[null]}],"required":true},
             "groupReference": {"dataType":"union","subSchemas":[{"ref":"IGroup"},{"dataType":"enum","enums":[null]}],"required":true},
             "channelReference": {"dataType":"union","subSchemas":[{"ref":"IChannel"},{"dataType":"enum","enums":[null]}],"required":true},
