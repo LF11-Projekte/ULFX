@@ -1,0 +1,3 @@
+[submodule "ULFX_Frontend"]
+	path = ULFX_Frontend
+	url = https://github.com/LF11-Projekte/ULFX_Frontend.git

@@ -7,59 +7,526 @@
         "requestBodies": {},
         "responses": {},
         "schemas": {
-            "UserEntity": {
+            "IUser": {
                 "properties": {
                     "id": {
-                        "type": "number",
-                        "format": "double"
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "email": {
+                        "type": "string"
                     },
                     "username": {
                         "type": "string"
                     },
                     "description": {
                         "type": "string"
-                    },
-                    "priveledges": {
-                        "type": "number",
-                        "format": "double"
                     }
                 },
                 "required": [
                     "id",
+                    "creationDate",
+                    "updateDate",
+                    "email",
                     "username",
-                    "description",
-                    "priveledges"
+                    "description"
                 ],
                 "type": "object",
                 "additionalProperties": false
+            },
+            "Pick_IUser.email-or-username-or-description_": {
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "email",
+                    "username",
+                    "description"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "IUserProps": {
+                "$ref": "#/components/schemas/Pick_IUser.email-or-username-or-description_"
+            },
+            "ISubscription": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "publisherId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "userId",
+                    "publisherId"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_ISubscription.userId-or-publisherId_": {
+                "properties": {
+                    "userId": {
+                        "type": "string"
+                    },
+                    "publisherId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "userId",
+                    "publisherId"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "ISubscriptionProps": {
+                "$ref": "#/components/schemas/Pick_ISubscription.userId-or-publisherId_"
+            },
+            "IReaction": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "COMMENT",
+                            "POST"
+                        ]
+                    },
+                    "reactionType": {
+                        "type": "string",
+                        "enum": [
+                            "LIKE",
+                            "DISLIKE"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "userId",
+                    "referenceId",
+                    "referenceType",
+                    "reactionType"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_IReaction.userId-or-referenceId-or-referenceType-or-reactionType_": {
+                "properties": {
+                    "userId": {
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "COMMENT",
+                            "POST"
+                        ]
+                    },
+                    "reactionType": {
+                        "type": "string",
+                        "enum": [
+                            "LIKE",
+                            "DISLIKE"
+                        ]
+                    }
+                },
+                "required": [
+                    "userId",
+                    "referenceId",
+                    "referenceType",
+                    "reactionType"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "IReactionProps": {
+                "$ref": "#/components/schemas/Pick_IReaction.userId-or-referenceId-or-referenceType-or-reactionType_"
+            },
+            "IPublisher": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "CHANNEL"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "referenceId",
+                    "referenceType"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_IPublisher.referenceId-or-referenceType_": {
+                "properties": {
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "GROUP",
+                            "CHANNEL"
+                        ]
+                    }
+                },
+                "required": [
+                    "referenceId",
+                    "referenceType"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "IPublisherProps": {
+                "$ref": "#/components/schemas/Pick_IPublisher.referenceId-or-referenceType_"
+            },
+            "IPost": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "publisherId": {
+                        "type": "string"
+                    },
+                    "creatorId": {
+                        "type": "string"
+                    },
+                    "editorIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "images": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "title",
+                    "publisherId",
+                    "creatorId",
+                    "editorIds",
+                    "images",
+                    "text"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_IPost.title-or-publisherId-or-creatorId-or-editorIds-or-images-or-text_": {
+                "properties": {
+                    "publisherId": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "creatorId": {
+                        "type": "string"
+                    },
+                    "editorIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "images": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "publisherId",
+                    "title",
+                    "creatorId",
+                    "editorIds",
+                    "images",
+                    "text"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "IPostProps": {
+                "$ref": "#/components/schemas/Pick_IPost.title-or-publisherId-or-creatorId-or-editorIds-or-images-or-text_"
+            },
+            "IGroup": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "adminIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "memberIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "name",
+                    "adminIds",
+                    "memberIds"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_IGroup.name-or-adminIds-or-memberIds_": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "adminIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "memberIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "name",
+                    "adminIds",
+                    "memberIds"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "IGroupProps": {
+                "$ref": "#/components/schemas/Pick_IGroup.name-or-adminIds-or-memberIds_"
+            },
+            "IComment": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "COMMENT",
+                            "POST"
+                        ]
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "creationDate",
+                    "updateDate",
+                    "userId",
+                    "referenceId",
+                    "referenceType",
+                    "text"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_IComment.userId-or-referenceId-or-referenceType-or-text_": {
+                "properties": {
+                    "userId": {
+                        "type": "string"
+                    },
+                    "referenceId": {
+                        "type": "string"
+                    },
+                    "referenceType": {
+                        "type": "string",
+                        "enum": [
+                            "COMMENT",
+                            "POST"
+                        ]
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "userId",
+                    "referenceId",
+                    "referenceType",
+                    "text"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "ICommentProps": {
+                "$ref": "#/components/schemas/Pick_IComment.userId-or-referenceId-or-referenceType-or-text_"
             }
         },
         "securitySchemes": {}
     },
     "info": {
-        "title": "backend",
-        "version": "1.0.0",
-        "license": {
-            "name": "ISC"
-        },
-        "contact": {}
+        "title": "ulfx-api",
+        "version": "0.1.0",
+        "contact": {
+            "name": "Karl Jahn"
+        }
     },
     "paths": {
-        "/user/{userId}": {
+        "/User/{userId}": {
             "get": {
-                "operationId": "GetUserById",
+                "operationId": "Get",
                 "responses": {
                     "200": {
                         "description": "Ok",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/UserEntity"
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IUser"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
                                 }
                             }
                         }
                     }
                 },
+                "tags": [
+                    "User"
+                ],
                 "security": [],
                 "parameters": [
                     {
@@ -67,28 +534,1030 @@
                         "name": "userId",
                         "required": true,
                         "schema": {
-                            "format": "double",
-                            "type": "number"
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "User"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 ]
             }
         },
-        "/user": {
-            "post": {
-                "operationId": "CreateUser",
+        "/User": {
+            "get": {
+                "operationId": "GetAll",
                 "responses": {
-                    "201": {
-                        "description": "Created"
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IUser"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
                     }
                 },
+                "tags": [
+                    "User"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/User/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "User"
+                ],
                 "security": [],
                 "parameters": [],
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
-                            "schema": {}
+                            "schema": {
+                                "$ref": "#/components/schemas/IUserProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Subscription/{subscriptionId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ISubscription"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscriptions"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscriptions"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Subscription": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/ISubscription"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscriptions"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Subscription/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ISubscription"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Subscriptions"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ISubscriptionProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Reaction/{reactionId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IReaction"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "reactionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "reactionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Reaction/{referenceType}/{referenceId}": {
+            "get": {
+                "operationId": "GetCountOf",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "dislikes": {
+                                            "type": "number",
+                                            "format": "double"
+                                        },
+                                        "likes": {
+                                            "type": "number",
+                                            "format": "double"
+                                        }
+                                    },
+                                    "required": [
+                                        "dislikes",
+                                        "likes"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "referenceType",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "COMMENT",
+                                "POST"
+                            ]
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "referenceId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Reaction": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IReaction"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Reaction/{referenceType}/all": {
+            "get": {
+                "operationId": "GetAllOfType",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IReaction"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "referenceType",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "POST",
+                                "COMMENT"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/Reaction/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IReaction"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reaction"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IReactionProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Publisher/{publisherId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IPublisher"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Publisher"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "publisherId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Publisher"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "publisherId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Publisher": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IPublisher"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Publisher"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Publisher/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IPublisher"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Publisher"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IPublisherProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Post/{postId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IPost"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Post"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "postId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Post"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "postId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Post": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IPost"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Post"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Post/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IPost"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Post"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IPostProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Group/{groupId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IGroup"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Group"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "groupId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Group"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "groupId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Group": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IGroup"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Group"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Group/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IGroup"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Group"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IGroupProps"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Comment/{postCommentId}": {
+            "get": {
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/IComment"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "PostComment"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "postCommentId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "PostComment"
+                ],
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "postCommentId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/Comment": {
+            "get": {
+                "operationId": "GetAll",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "$ref": "#/components/schemas/IComment"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "NOT_FOUND"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "PostComment"
+                ],
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/Comment/create": {
+            "post": {
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IComment"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "PostComment"
+                ],
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ICommentProps"
+                            }
                         }
                     }
                 }
@@ -97,7 +1566,7 @@
     },
     "servers": [
         {
-            "url": "/"
+            "url": "/api"
         }
     ]
 }

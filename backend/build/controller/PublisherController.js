@@ -21,17 +21,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostController = void 0;
+exports.PublisherController = void 0;
 const tsoa_1 = require("tsoa");
-const PostService_1 = require("../service/PostService");
-let PostController = class PostController extends tsoa_1.Controller {
+const PublisherService_1 = require("../service/PublisherService");
+let PublisherController = class PublisherController extends tsoa_1.Controller {
     constructor() {
         super(...arguments);
-        this.service = new PostService_1.PostService();
+        this.service = new PublisherService_1.PublisherService();
     }
-    get(postId) {
+    get(publisherId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.getById(postId);
+            return yield this.service.getById(publisherId);
         });
     }
     getAll() {
@@ -44,42 +44,42 @@ let PostController = class PostController extends tsoa_1.Controller {
             return yield this.service.create(body);
         });
     }
-    delete(postId) {
+    delete(publisherId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.deleteById(postId);
+            return yield this.service.deleteById(publisherId);
         });
     }
 };
-exports.PostController = PostController;
+exports.PublisherController = PublisherController;
 __decorate([
-    (0, tsoa_1.Get)("{postId}"),
+    (0, tsoa_1.Get)("{publisherId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "get", null);
+], PublisherController.prototype, "get", null);
 __decorate([
     (0, tsoa_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "getAll", null);
+], PublisherController.prototype, "getAll", null);
 __decorate([
     (0, tsoa_1.Post)("create"),
     __param(0, (0, tsoa_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "create", null);
+], PublisherController.prototype, "create", null);
 __decorate([
-    (0, tsoa_1.Delete)("{postId}"),
+    (0, tsoa_1.Delete)("{publisherId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "delete", null);
-exports.PostController = PostController = __decorate([
-    (0, tsoa_1.Route)("Post"),
-    (0, tsoa_1.Tags)("Post")
-], PostController);
-//# sourceMappingURL=PostController.js.map
+], PublisherController.prototype, "delete", null);
+exports.PublisherController = PublisherController = __decorate([
+    (0, tsoa_1.Route)("Publisher"),
+    (0, tsoa_1.Tags)("Publisher")
+], PublisherController);
+//# sourceMappingURL=PublisherController.js.map

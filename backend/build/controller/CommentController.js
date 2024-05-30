@@ -21,17 +21,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostController = void 0;
+exports.PostCommentController = void 0;
 const tsoa_1 = require("tsoa");
-const PostService_1 = require("../service/PostService");
-let PostController = class PostController extends tsoa_1.Controller {
+const CommentService_1 = require("../service/CommentService");
+let PostCommentController = class PostCommentController extends tsoa_1.Controller {
     constructor() {
         super(...arguments);
-        this.service = new PostService_1.PostService();
+        this.service = new CommentService_1.CommentService();
     }
-    get(postId) {
+    get(postCommentId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.getById(postId);
+            return yield this.service.getById(postCommentId);
         });
     }
     getAll() {
@@ -44,42 +44,42 @@ let PostController = class PostController extends tsoa_1.Controller {
             return yield this.service.create(body);
         });
     }
-    delete(postId) {
+    delete(postCommentId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.service.deleteById(postId);
+            return yield this.service.deleteById(postCommentId);
         });
     }
 };
-exports.PostController = PostController;
+exports.PostCommentController = PostCommentController;
 __decorate([
-    (0, tsoa_1.Get)("{postId}"),
+    (0, tsoa_1.Get)("{postCommentId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "get", null);
+], PostCommentController.prototype, "get", null);
 __decorate([
     (0, tsoa_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "getAll", null);
+], PostCommentController.prototype, "getAll", null);
 __decorate([
     (0, tsoa_1.Post)("create"),
     __param(0, (0, tsoa_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "create", null);
+], PostCommentController.prototype, "create", null);
 __decorate([
-    (0, tsoa_1.Delete)("{postId}"),
+    (0, tsoa_1.Delete)("{postCommentId}"),
     __param(0, (0, tsoa_1.Path)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostController.prototype, "delete", null);
-exports.PostController = PostController = __decorate([
-    (0, tsoa_1.Route)("Post"),
-    (0, tsoa_1.Tags)("Post")
-], PostController);
-//# sourceMappingURL=PostController.js.map
+], PostCommentController.prototype, "delete", null);
+exports.PostCommentController = PostCommentController = __decorate([
+    (0, tsoa_1.Route)("Comment"),
+    (0, tsoa_1.Tags)("PostComment")
+], PostCommentController);
+//# sourceMappingURL=CommentController.js.map
